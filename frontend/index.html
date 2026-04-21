@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>viadee Escape Game MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>viadee Escape Game</h1>
+      <div class="header-actions">
+        <button id="show-game-btn" type="button">Game</button>
+        <button id="show-editor-btn" type="button">Scenario Editor</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="home-screen" class="card">
+        <h2>Welcome</h2>
+        <p>Enter your name to start your session.</p>
+        <label for="player-name-input">Player name</label>
+        <input id="player-name-input" type="text" placeholder="Your name" />
+        <div class="actions">
+          <button id="start-game-btn" type="button">Start New Game</button>
+          <button id="resume-game-btn" type="button" disabled>Resume Saved Game</button>
+        </div>
+      </section>
+
+      <section id="game-screen" class="card hidden">
+        <div class="status-row">
+          <div><strong>Player:</strong> <span id="player-name"></span></div>
+          <div><strong>Room:</strong> <span id="current-room"></span></div>
+        </div>
+
+        <article class="view-panel">
+          <h2 id="current-view-title"></h2>
+          <p id="current-view-description"></p>
+        </article>
+
+        <section class="hotspots-panel">
+          <h3>Available Actions</h3>
+          <div id="hotspots-list" class="hotspots-list"></div>
+        </section>
+
+        <section class="inventory-panel">
+          <h3>Inventory</h3>
+          <div id="inventory-list" class="inventory-list"></div>
+        </section>
+
+        <p id="event-message" class="event-message" aria-live="polite"></p>
+      </section>
+
+      <section id="editor-screen" class="card hidden">
+        <h2>Scenario Editor (MVP)</h2>
+        <p>Edit the scenario JSON and apply it to the running game.</p>
+        <textarea id="scenario-json" rows="18"></textarea>
+        <div class="actions">
+          <button id="apply-scenario-btn" type="button">Apply JSON</button>
+          <button id="reset-scenario-btn" type="button">Load Default Scenario</button>
+        </div>
+        <p id="editor-message" class="event-message" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
