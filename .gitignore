@@ -1,0 +1,18 @@
+# Created by https://www.toptal.com/designers/subtlepatterns/ 
+
+# Gradle 
+/.gradle/ 
+/build/ 
+
+# IDE Files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Node
+node_modules/
+package-lock.json
+
+# TypeScript
+*.tsbuildinfo
