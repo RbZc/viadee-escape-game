@@ -158,6 +158,7 @@ function loadState() {
       resumeGameBtn.disabled = false;
     }
   } catch (_error) {
+    console.warn("Failed to parse saved game state.", _error);
     resumeGameBtn.disabled = true;
   }
 }
@@ -261,7 +262,8 @@ function renderHotspots(view) {
 function renderGame() {
   const view = getView(gameState.currentViewId);
   if (!view) {
-    eventMessage.textContent = "Invalid scenario state.";
+    eventMessage.textContent = "Start or resume a game first.";
+    showScreen("home");
     return;
   }
 
@@ -292,9 +294,24 @@ function startNewGame() {
 
 function resumeGame() {
   loadState();
+  if (!getView(gameState.currentViewId)) {
+    showScreen("home");
+    eventMessage.textContent = "No valid saved game found.";
+    return;
+  }
   showScreen("game");
   renderGame();
   eventMessage.textContent = "Loaded saved game.";
+}
+
+function openGameScreen() {
+  if (!getView(gameState.currentViewId)) {
+    showScreen("home");
+    eventMessage.textContent = "Start or resume a game first.";
+    return;
+  }
+  showScreen("game");
+  renderGame();
 }
 
 function applyScenario() {
@@ -326,7 +343,7 @@ function resetScenario() {
 
 startGameBtn.addEventListener("click", startNewGame);
 resumeGameBtn.addEventListener("click", resumeGame);
-showGameBtn.addEventListener("click", () => showScreen("game"));
+showGameBtn.addEventListener("click", openGameScreen);
 showEditorBtn.addEventListener("click", () => showScreen("editor"));
 applyScenarioBtn.addEventListener("click", applyScenario);
 resetScenarioBtn.addEventListener("click", resetScenario);
