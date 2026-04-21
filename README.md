@@ -40,12 +40,10 @@ The stack is flexible. A recommended approach for this project is:
 
 > If you choose a different stack, keep the domain model and API boundaries intact so the engine remains portable.
 
-## Repository Structure (planned)
+## Repository Structure
 
-- `backend/` — domain model, game engine, persistence, APIs
-- `frontend/` — responsive UI (game client + editor UI)
+- `frontend/` — MVP web client (game + basic scenario editor)
 - `docs/` — requirements, architecture, data model
-- `.github/` — CI workflows, issue templates (later)
 
 ## How the Game Works (concept)
 
@@ -69,3 +67,27 @@ This is a student project developed in collaboration with viadee. Please keep co
 - security best practices (as the app is security-themed)
 
 See `docs/requirements.md` and `docs/architecture.md`.
+
+## MVP Implementation (current)
+
+The repository now contains a browser-based MVP in `frontend/` with:
+
+- Registration/home screen and session start
+- A playable 3-room scenario with room/view transitions
+- Hotspot-based actions
+- Persistent inventory and state flags
+- Save/resume via browser local storage
+- A basic JSON scenario editor for non-technical content updates
+
+### Run locally
+
+From the repository root:
+
+```bash
+cd frontend
+python3 -m http.server 8080
+```
+
+Then open:
+
+`http://localhost:8080`
